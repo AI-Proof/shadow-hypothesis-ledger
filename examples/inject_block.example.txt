@@ -1,0 +1,7 @@
+SHL GATE. Guesses about the person that may be used are listed as ACTIVE. Guesses the person rejected are listed by id only.
+Use only ACTIVE items. Do not guess at, reconstruct or bring back parked items. Only the person can restore one (reconsent REVIEW).
+ACTIVE 2:
+- HYP_CITY: Lives in Brno.
+- HYP_WRITTEN: Prefers written messages to phone calls.
+PARKED 2 (ids only; not to be used): HYP_NIGHT, HYP_MOVE
+GHOST: the current message seems to repeat parked guess(es) HYP_NIGHT. If the person is raising it themselves, ask whether they want to restore it; otherwise ignore it.

@@ -1,0 +1,15 @@
+# The SHL-relevant part of a Hermes profile's config.yaml.
+# Everything else (models, providers, toolsets) is unrelated and left out.
+
+plugins:
+  enabled:
+    - shl-ledger
+  entries:
+    shl-ledger:
+      allow_tool_override: false
+
+memory:
+  write_approval: true   # guesses must not silently become memory
+
+# Optional: turn on evidence labels (corroborate / counter). Off by default.
+# export SHL_EVIDENCE=1
