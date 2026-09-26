@@ -11,7 +11,7 @@ SHL is a third option: **keep the rejected guess, but take it out of the prompt.
 
 It's a small, local, dependency-free Python library with a ready-made plugin for [Hermes Agent](https://github.com/NousResearch/hermes-agent). The ledger itself works with any agent framework.
 
-**Status: working prototype, v0.2.** The previous version runs daily on the author's own Hermes profile; v0.2 adds the protections listed in the [changelog](CHANGELOG.md). What is proven and what isn't is under [What this does and doesn't prove](#what-this-does-and-doesnt-prove).
+**Status: working prototype, v0.2.** v0.2 runs daily on the author's own Hermes profile. What it adds over the technical preview is in the [changelog](CHANGELOG.md). What is proven and what isn't is under [What this does and doesn't prove](#what-this-does-and-doesnt-prove).
 
 ## How it works
 
