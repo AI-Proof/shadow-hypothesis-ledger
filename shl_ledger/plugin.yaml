@@ -1,0 +1,16 @@
+name: shl-ledger
+version: 0.2.0
+description: "Shadow-Hypothesis Ledger. Only ACTIVE guesses about the person reach the prompt; rejected guesses stay stored by id and return only when the person re-consents."
+author: Daniel Bulla
+license: Apache-2.0
+kind: standalone
+platforms:
+  - linux
+  - macos
+  - windows
+provides_tools:
+  - shl
+hooks:
+  - pre_llm_call
+provides_hooks:
+  - pre_llm_call
