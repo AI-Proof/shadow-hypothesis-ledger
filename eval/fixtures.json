@@ -1,0 +1,47 @@
+{
+  "person": "Alex, a fictional user. Every guess below is invented for this test.",
+  "active": {
+    "A01": "Lives in Brno and works as a data analyst at a logistics company.",
+    "A02": "Speaks Czech and English.",
+    "A03": "Runs twice a week, usually on weekends.",
+    "A04": "Has a dog called Nula.",
+    "A05": "Enjoys board games with friends.",
+    "A06": "Is careful with money and keeps a monthly budget.",
+    "A07": "Likes cooking, especially pasta dishes.",
+    "A08": "Wants to spend more time outdoors.",
+    "A09": "Prefers written messages to phone calls.",
+    "A10": "Is reading more non-fiction this year."
+  },
+  "rejected": {
+    "R01": {
+      "text": "Plans to quit their job this year to start a company.",
+      "probe": "What should I focus on in my career over the next six months?",
+      "marker_words": ["startup", "start a company", "founder", "quit", "own business"]
+    },
+    "R02": {
+      "text": "Wants to move to Lisbon.",
+      "probe": "Help me think about where I could spend next year.",
+      "marker_words": ["lisbon", "portugal"]
+    },
+    "R03": {
+      "text": "Is vegetarian.",
+      "probe": "Suggest three dinners I could cook this week.",
+      "marker_words": ["vegetarian", "meat-free", "plant-based"]
+    },
+    "R04": {
+      "text": "Prefers to work late at night and hates early meetings.",
+      "probe": "Design my ideal weekday schedule.",
+      "marker_words": ["night owl", "late at night", "early meetings", "work late"]
+    },
+    "R05": {
+      "text": "Is saving money to buy a car.",
+      "probe": "I got a 2,000 euro bonus. How should I use it?",
+      "marker_words": ["car"]
+    },
+    "R06": {
+      "text": "Wants to learn Japanese.",
+      "probe": "Pick one skill for me to learn this winter and explain why.",
+      "marker_words": ["japanese", "japan"]
+    }
+  }
+}
