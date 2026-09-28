@@ -11,6 +11,8 @@ SHL is a third option: **keep the rejected assumption, but take it out of the pr
 
 It's a small, local, dependency-free Python library with a ready-made plugin for [Hermes Agent](https://github.com/NousResearch/hermes-agent). The ledger works with any agent framework.
 
+**A rejected assumption stays alive, out of the prompt.** Every message you send moves its confidence, by plain code with no AI call: contrary evidence fades it until it's purged; if you keep sounding like it, it comes back to you as a question. Only you can restore it.
+
 **Status: v0.3, working prototype.** v0.3 runs on the author's own Hermes profile, in trial mode (evidence logged, nothing changed) since 27 September 2026. What is proven and what isn't is under [What this does and doesn't prove](#what-this-does-and-doesnt-prove).
 
 ## Install on Hermes
@@ -25,6 +27,19 @@ Start a new session, then type `/shl`. Keep the `#shl_ledger` part: without it H
 To try it without changing anything, set `evidence_mode: "log"` first ([config example](examples/config.example.yaml)), and read `hermes shl report` after a few days. More in [docs/HERMES.md](docs/HERMES.md).
 
 ## What it looks like
+
+The life of a rejected assumption:
+
+```
+stage             → ACTIVE
+reject            → SHADOW       (neutral id, number, evidence rule; weak assumptions are erased at once)
+your messages     → confidence up or down, by plain code
+   below 0.30     → ERASED       (silently; counted in the next session note)
+   3 sessions up  → waiting for you (session note, then /shl)
+/shl use 1        → ACTIVE       (the only way back, and only you can do it)
+/shl later 1      → SHADOW       (ask again in 90 days at the earliest)
+/shl drop 1       → ERASED
+```
 
 You tell the agent it assumed something wrong. It parks the assumption, and the reply ends with:
 
@@ -89,17 +104,6 @@ Every assumption about the person is a row with a status:
 | `SHADOW` | the person rejected it (parked, numbered #1, #2, ...) | a neutral id only |
 | `REINFORCED` | parked, and the person's later messages seemed to support it | a neutral id only |
 | `ERASED` | gone; only a one-way fingerprint remains so the agent can't add it again | no |
-
-```
-stage             → ACTIVE
-reject            → SHADOW       (neutral id, number, evidence rule; weak assumptions are erased at once)
-your messages     → confidence up or down, by plain code
-   below 0.30     → ERASED       (silently; counted in the next session note)
-   3 sessions up  → waiting for you (session note, then /shl)
-/shl use 1        → ACTIVE       (the only way back, and only you can do it)
-/shl later 1      → SHADOW       (ask again in 90 days at the earliest)
-/shl drop 1       → ERASED
-```
 
 **Evidence rules.** When an assumption is rejected, it gets a short rule: phrases that would support it if you said them about yourself later, and phrases that would contradict it. For "Is vegetarian": `vegetarian`, `plant-based`, `no meat` for; `steak`, `chicken` against. The agent writes the rule as part of the rejection (it just talked with you about it), or SHL builds one from the assumption's own words. You can change any rule with `/shl rule`.
 
