@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "shl-ledger"
+version = "0.3.0"
+description = "Shadow-Hypothesis Ledger: when a person tells their AI agent an assumption about them is wrong, the agent stops using it. Rejected assumptions stay stored, out of the prompt, and only the person can bring one back."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Daniel Bulla" }]
+keywords = ["ai-agents", "llm", "agent-memory", "privacy", "consent", "hermes-agent"]
+classifiers = [
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = []
+
+[project.optional-dependencies]
+test = ["pytest", "pyyaml"]
+
+[project.urls]
+Homepage = "https://github.com/AI-Proof/shadow-hypothesis-ledger"
+Documentation = "https://github.com/AI-Proof/shadow-hypothesis-ledger/tree/main/docs"
+
+[tool.setuptools]
+packages = ["shl_ledger"]
+
+[tool.setuptools.package-data]
+shl_ledger = ["plugin.yaml", "skills/shl-context/SKILL.md"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

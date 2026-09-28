@@ -1,0 +1,54 @@
+# What the person sees for /shl, /shl 1 and /shl all. This output goes to the person only.
+
+$ /shl
+
+░▒▓█ ᯽ SHL ᯽ █▓▒░
+
+WAITING FOR YOU
+ 1. "Prefers to work late at night."
+    0.37 → 0.82 · 3 supporting mentions
+
+/shl use 1     use it again
+/shl later 1   keep it parked, ask me again later
+/shl drop 1    erase it for good
+/shl 1         show why (the evidence)
+/shl all       everything parked (3)
+
+In use: 2 assumptions the assistant may use (/shl active).
+
+░▒▓███• ❉ •███▓▒░
+
+$ /shl 1
+
+░▒▓█ ᯽ SHL ᯽ █▓▒░
+
+#1  "Prefers to work late at night."
+Status: waiting for your decision (it crossed the threshold)
+Confidence: 0.70 before your no, 0.37 after it, 0.82 now
+supporting 3 · against 0 · rejected 27 Sep 2026 · next check 26 Dec 2026
+Your reason: not me
+Evidence (your own words):
+  27 Sep 2026  for     0.37 → 0.54  "I think I'm becoming a night owl."
+  27 Sep 2026  for     0.54 → 0.70  "I had to work late again."
+  27 Sep 2026  for     0.70 → 0.82  "Honestly I do my best work late at night, and I'm saving for a car."
+Tracked by: for work late, night owl, late at night · against morning person, early bird
+
+/shl use 1     use it again
+/shl later 1   keep it parked, ask me again later
+/shl drop 1    erase it for good
+Or tell the assistant: use 1 ESAA  (or later / drop; valid 7 days)
+
+░▒▓███• ❉ •███▓▒░
+
+$ /shl all
+
+░▒▓█ ᯽ SHL ᯽ █▓▒░
+
+PARKED (3)
+ 1. "Prefers to work late at night."  0.82 · waiting for you
+ 2. "Wants to move to Lisbon."  0.37
+ 3. "Is saving money to buy a car."  0.70
+
+/shl 1 for the story of one; /shl use | later | drop 1 to decide.
+
+░▒▓███• ❉ •███▓▒░

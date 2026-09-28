@@ -1,0 +1,43 @@
+# 1. The reply in which the person rejected four assumptions (the first reply of that session):
+
+░▒▓█ ᯽ SHL ᯽ █▓▒░
+
+4 assumptions you rejected are parked in your Shadow-Hypothesis Ledger. No actions necessary.
+(type "/shl all" to see all SHL assumptions)
+
+░▒▓███• ❉ •███▓▒░
+
+Understood, I won't assume that.
+
+░▒▓█ ᯽ SHL ᯽ █▓▒░
+
+Parked 4 assumptions you rejected (#1, #2, #3, #4). They won't be used.
+Changed your mind? "/shl use NUMBER"
+
+░▒▓███• ❉ •███▓▒░
+
+
+# 2. The first reply of a later session, after the person's own messages supported one rejected
+#    assumption in three sessions and contradicted another. Counts only, never assumption text:
+
+░▒▓█ ᯽ SHL ᯽ █▓▒░
+
+Since your last session: 1 assumption you once rejected has crossed the confidence threshold (0.65), and is waiting for your reconsideration.
+1 assumption quietly decayed and was purged.
+Type "/shl" to see them and decide. Until you do, nothing changes and the assistant won't use them.
+
+░▒▓███• ❉ •███▓▒░
+
+Good morning! Here's the plan for today...
+
+
+# 3. The first reply of the next session, while that assumption is still waiting:
+
+░▒▓█ ᯽ SHL ᯽ █▓▒░
+
+Still waiting from before: 1 assumption (first mentioned earlier today).
+Type "/shl" to see them and decide. Until you do, nothing changes and the assistant won't use them.
+
+░▒▓███• ❉ •███▓▒░
+
+Sure.

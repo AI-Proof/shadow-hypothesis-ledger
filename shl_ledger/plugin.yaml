@@ -1,16 +1,114 @@
 name: shl-ledger
-version: 0.2.0
-description: "Shadow-Hypothesis Ledger. Only ACTIVE guesses about the person reach the prompt; rejected guesses stay stored by id and return only when the person re-consents."
+version: 0.3.0
+manifest_version: 2
+description: "Shadow-Hypothesis Ledger. When you tell your agent an assumption about you is wrong, it stops using it. Rejected assumptions stay stored by id, out of the prompt; your later messages move their confidence by plain code (no model calls), and only you can bring one back."
 author: Daniel Bulla
 license: Apache-2.0
+homepage: https://github.com/AI-Proof/shadow-hypothesis-ledger
+tags: [memory, privacy, consent, ledger, user-model]
 kind: standalone
+requires_hermes: ">=0.21"
 platforms:
   - linux
   - macos
   - windows
 provides_tools:
   - shl
-hooks:
-  - pre_llm_call
 provides_hooks:
   - pre_llm_call
+  - transform_llm_output
+  - pre_tool_call
+config_schema:
+  evidence_mode:
+    type: str
+    choices: ["on", "log", "off"]
+    default: "on"
+    label: Evidence
+    description: "on = your messages move the confidence of rejected assumptions; log = record what would happen, change nothing (trial runs); off = ignore messages"
+  session_note:
+    type: bool
+    default: true
+    label: Session note
+    description: "Start each new session with the SHL note: what waits for your decision, what was purged, how many assumptions are parked (counts only, never their text)"
+  confirmations:
+    type: bool
+    default: true
+    label: Confirmations
+    description: "A short SHL line at the end of a reply when something happened (an assumption was parked, or the assistant tried to act without you)"
+  ghost_mode:
+    type: str
+    choices: [ask, inert]
+    default: ask
+    label: When you mention a rejected assumption
+    description: "ask = the agent may ask whether you want it restored; inert = it never offers"
+  gate_note:
+    type: bool
+    default: false
+    label: Filter note
+    description: "Remind the model that the block is a filter, not proof about you"
+  purge_mode:
+    type: str
+    choices: [hash, full]
+    default: hash
+    label: When an assumption is erased
+    description: "hash = keep a one-way fingerprint so it can't be added again; full = delete the row entirely"
+  screen_memory:
+    type: bool
+    default: true
+    label: Screen memory writes
+    description: "Remove sentences that repeat a rejected assumption from what the agent saves as memory"
+  timed_review_days:
+    type: int
+    default: 90
+    label: Timed review (days)
+    description: "Days after a rejection (or a DEFER) before it waits for your review even without new evidence. 0 = never"
+  shadow_threshold:
+    type: float
+    default: 0.65
+    label: Shadow threshold
+    description: "Advanced. An assumption rejected with lower confidence is erased at once (fingerprint kept) instead of parked"
+  rejection_weight:
+    type: float
+    default: 0.25
+    label: Weight of your no
+    description: "Advanced. Your no multiplies an assumption's odds by this (0.25 = four times less likely). 1.0 ignores it, as the original specification did"
+  likelihood_ratio:
+    type: float
+    default: 2.0
+    label: Support strength
+    description: "Advanced. How much one supporting mention multiplies the odds of a rejected assumption"
+  decay:
+    type: float
+    default: 0.15
+    label: Contrary step
+    description: "Advanced. How much one contrary mention lowers a rejected assumption's confidence"
+  expire_at:
+    type: float
+    default: 0.30
+    label: Erase below
+    description: "Advanced. A rejected assumption whose confidence falls below this is erased silently"
+  review_evidence:
+    type: int
+    default: 3
+    label: Mentions before a review
+    description: "Advanced. Supporting mentions (in separate sessions) needed before it waits for your review"
+  notice_threshold:
+    type: float
+    default: 0.65
+    label: Review threshold
+    description: "Advanced. Confidence a rejected assumption must regain before it waits for your review"
+  neutral_ids:
+    type: bool
+    default: true
+    label: Neutral ids
+    description: "Advanced. Once rejected, an assumption gets a neutral id (SHL_7Q2KX9), so its name says nothing about it"
+  rule_source:
+    type: str
+    default: "agent,auto"
+    label: Evidence rule sources
+    description: "Advanced. Where evidence rules come from, in order: agent (phrases the agent gives on reject), llm (one model call per rejection), auto (the assumption's own words)"
+  memory_tools:
+    type: str
+    default: memory
+    label: Memory tools
+    description: "Advanced. Comma-separated tool names whose writes are screened"

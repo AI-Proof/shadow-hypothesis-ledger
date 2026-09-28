@@ -7,11 +7,11 @@ authors:
     given-names: Daniel
     city: Bratislava
     country: SK
-version: 0.2.0
-date-released: 2026-09-26
+version: 0.3.0
+date-released: 2026-09-28
 license: Apache-2.0
 repository-code: "https://github.com/AI-Proof/shadow-hypothesis-ledger"
-abstract: "Keeps rejected inferences about a person out of an AI agent's prompt. Rejected guesses are stored locally, shown to the model by id only, refused if re-added under another id, and restored only by the person's explicit re-consent."
+abstract: "Keeps rejected inferences about a person out of an AI agent's prompt. Rejected inferences are stored locally, shown to the model by id only, refused if re-added under another id, updated by plain-code Bayesian evidence from the person's own later messages, and restored only by the person's explicit re-consent."
 keywords:
   - ai-agents
   - agent-memory
