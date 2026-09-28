@@ -7,9 +7,12 @@ plugins:
   entries:
     shl-ledger:
       allow_tool_override: false
+      settings:
+        evidence_mode: "log"     # start in log mode; switch to "on" after a week of `hermes shl report`
+        session_note: true       # the SHL note at the start of each session
+        confirmations: true      # a short SHL line when something happened in a reply
+        ghost_mode: ask          # or: inert (the agent never offers to restore a rejected assumption)
+        timed_review_days: 90    # 0 = no timed reviews
 
 memory:
-  write_approval: true   # guesses must not silently become memory
-
-# Optional: turn on evidence labels (corroborate / counter). Off by default.
-# export SHL_EVIDENCE=1
+  write_approval: true   # assumptions must not silently become memory
